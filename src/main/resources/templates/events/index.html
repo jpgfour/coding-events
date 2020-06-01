@@ -7,11 +7,26 @@
 
 <h1>All Events</h1>
 
-<ul>
+<!--<ul>-->
+<!--    <th:block th:each="event : ${events}">-->
+<!--        <li th:text="${event}"></li>-->
+<!--    </th:block>-->
+<!--</ul>-->
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    </thead>
     <th:block th:each="event : ${events}">
-        <li th:text="${event}"></li>
+        <tr>
+        <td th:text="${event.key}">Whats</td>
+        <td th:text="${event.value}">Up</td>
+        </tr>
     </th:block>
-</ul>
+</table>
 
 </body>
 </html>
