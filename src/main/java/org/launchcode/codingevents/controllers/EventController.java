@@ -68,9 +68,13 @@ public class EventController {
     }
 
     //lives at events/edit
-//    @PostMapping("edit")
-//    public String processEditForm(int eventId, String name, String description) {
-//        // controller code will go here
-//    }
+    @PostMapping("edit")
+    public String processEditForm(int eventId, String name, String description) {
+        // controller code will go here
+        Event editedEvent = EventData.getById(eventId);
+        editedEvent.setName(name);
+        editedEvent.setDescription(description);
+        return "redirect:";
+    }
 
 }
