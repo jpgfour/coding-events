@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,6 +62,7 @@ public class EventController {
     public String displayEditForm(Model model, @PathVariable int eventId) {
         // controller code will go here
         model.addAttribute(EventData.getById(eventId));
+        model.addAttribute("title","Edit Event '" + EventData.getById(eventId).getName() + "' (id=" + eventId + ")");
         //redirect?  index?
         return "events/edit";
     }
