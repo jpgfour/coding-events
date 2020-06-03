@@ -61,13 +61,14 @@ public class EventController {
     public String displayEditForm(Model model, @PathVariable int eventId) {
         // controller code will go here
         model.addAttribute(EventData.getById(eventId));
-        return "events/index";
+        //redirect?  index?
+        return "events/edit";
     }
 
     //lives at events/edit
-    @PostMapping("edit")
-    public String processEditForm(int eventId, String name, String description) {
-        // controller code will go here
-    }
+//    @PostMapping("edit")
+//    public String processEditForm(int eventId, String name, String description) {
+//        // controller code will go here
+//    }
 
 }
