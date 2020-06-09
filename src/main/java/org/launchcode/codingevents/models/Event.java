@@ -1,9 +1,8 @@
 package org.launchcode.codingevents.models;
 
+import java.util.Date;
 import java.util.Objects;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 public class Event {
 
@@ -21,15 +20,37 @@ public class Event {
     @Email(message = "Invalid email.  Try again.")
     private String contactEmail;
 
-    public Event(String name, String description, String contactEmail) {
+    @NotBlank(message = "Location is required.")
+    @Size(max = 100, message = "Location is too long.")
+    private String location;
+
+    //@NotEmpty(message = "YOU MUST ANSWER THIS QUESTION.")
+    @AssertTrue(message = "YOU MUST CHECK THIS BOX.")
+    private Boolean registrationRequired;
+
+    @Positive(message = "Attendees must be a positive number")
+    private int attendees;
+
+    @Future(message = "Event date must be in the future")
+    private Date date;
+
+    public Event(String name, String description, String contactEmail, String location, Boolean registrationRequired, int attendees, Date date) {
+        this();
+        //System.out.println(this.id);
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
-        this.id = nextId;
-        nextId++;
+        this.location = location;
+        this.registrationRequired = registrationRequired;
+        this.attendees = attendees;
+        this.date = date;
     }
 
-    public Event() {}
+    public Event() {
+        this.id = nextId;
+        //System.out.println(this.id);
+        nextId++;
+    }
 
     public String getName() {
         return name;
@@ -53,6 +74,34 @@ public class Event {
 
     public void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
+    }
+
+    public String getLocation() { return location; }
+
+    public void setLocation(String location) { this.location = location; }
+
+    public Boolean getRegistrationRequired() {
+        return registrationRequired;
+    }
+
+    public void setRegistrationRequired(Boolean registrationRequired) {
+        this.registrationRequired = registrationRequired;
+    }
+
+    public int getAttendees() {
+        return attendees;
+    }
+
+    public void setAttendees(int attendees) {
+        this.attendees = attendees;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public int getId() {
