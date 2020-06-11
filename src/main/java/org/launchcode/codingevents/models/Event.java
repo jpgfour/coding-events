@@ -34,7 +34,9 @@ public class Event {
     @Future(message = "Event date must be in the future")
     private Date date;
 
-    public Event(String name, String description, String contactEmail, String location, Boolean registrationRequired, int attendees, Date date) {
+    private EventType type;
+
+    public Event(String name, String description, String contactEmail, String location, Boolean registrationRequired, int attendees, Date date, EventType type) {
         this();
         //System.out.println(this.id);
         this.name = name;
@@ -44,6 +46,7 @@ public class Event {
         this.registrationRequired = registrationRequired;
         this.attendees = attendees;
         this.date = date;
+        this.type = type;
     }
 
     public Event() {
@@ -102,6 +105,14 @@ public class Event {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public EventType getType() {
+        return type;
+    }
+
+    public void setType(EventType type) {
+        this.type = type;
     }
 
     public int getId() {
