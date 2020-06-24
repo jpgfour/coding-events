@@ -1,13 +1,22 @@
 package org.launchcode.codingevents.models;
 
+import javax.persistence.Entity;
+
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.*;
 
+
+@Entity
 public class Event {
 
+    @Id
+    @GeneratedValue
     private int id;
-    private static int nextId = 1;
+
+    //private static int nextId = 1;
 
     @NotBlank(message = "Name is required.")
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters long.")
@@ -37,7 +46,7 @@ public class Event {
     private EventType type;
 
     public Event(String name, String description, String contactEmail, String location, Boolean registrationRequired, int attendees, Date date, EventType type) {
-        this();
+        //this();
         //System.out.println(this.id);
         this.name = name;
         this.description = description;
@@ -49,10 +58,11 @@ public class Event {
         this.type = type;
     }
 
+    //still need noarg constructor for persistent class
     public Event() {
-        this.id = nextId;
+        //this.id = nextId;
         //System.out.println(this.id);
-        nextId++;
+        //nextId++;
     }
 
     public String getName() {
