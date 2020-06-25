@@ -1,3 +1,6 @@
+//can delete due to not using EventData any more
+//not used for chapter 17 work
+
 package org.launchcode.codingevents.data;
 
 //class that's responsible for storing event objects
